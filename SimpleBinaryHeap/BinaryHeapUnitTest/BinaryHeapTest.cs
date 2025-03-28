@@ -200,5 +200,56 @@ namespace BinaryHeapUnitTest
                 count--;
             }
         }
+        [TestMethod]
+        public void ChangingMaxHeapToMinHeap_ShoudRebuildHeapCorrectly()
+        {
+            var heap = new BinaryHeap<int>();
+            var count = 100;
+            var hashset = new HashSet<int>();
+            var random = new Random();
+            while (hashset.Count < count)
+            {
+                hashset.Add(random.Next(1, 3 * count));
+            }
+            foreach (var item in hashset)
+            {
+                heap.Add(item);
+            }
+            heap.SetComparator(new MinHeapComparer<int>());
+            var list = hashset.ToList();
+            list.Sort();
+            list.Reverse();
+            while (count > 0)
+            {
+                Assert.AreEqual(list[count - 1], heap.Peek());
+                heap.Remove();
+                count--;
+            }
+        }
+        [TestMethod]
+        public void ChangingMinHeapToMaxHeap_ShoudRebuildHeapCorrectly()
+        {
+            var heap = new BinaryHeap<int>(new MinHeapComparer<int>());
+            var count = 100;
+            var hashset = new HashSet<int>();
+            var random = new Random();
+            while (hashset.Count < count)
+            {
+                hashset.Add(random.Next(1, 3 * count));
+            }
+            foreach (var item in hashset)
+            {
+                heap.Add(item);
+            }
+            heap.SetComparator(new MaxHeapComparer<int>());
+            var list = hashset.ToList();
+            list.Sort();
+            while (count > 0)
+            {
+                Assert.AreEqual(list[count - 1], heap.Peek());
+                heap.Remove();
+                count--;
+            }
+        }
     }
 }
