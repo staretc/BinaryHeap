@@ -85,6 +85,10 @@ namespace BinaryHeapLib
         /// <returns>Элемент в корне кучи (максимальный или минимальный в зависимости от компаратора)</returns>
         public T Remove()
         {
+            if (Count == 0)
+            {
+                throw new ArgumentException();
+            }
             // заменяем элемент в корне на последний добавленный
             var item = _nodes[0];
             _nodes[0] = _nodes[Count - 1];
