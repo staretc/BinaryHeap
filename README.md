@@ -10,9 +10,9 @@
 ### Директория `BinaryHeapUnitTest`
 + Файл `BinaryHeapTest.cs` - описание юнит-тестов для класса BinaryHeap
 ### Директория `BinaryHeapExperiments`
-+ Файл `Program.cs` - экспериментальное использование написанных классов _(не завершено)_
++ Файл `Program.cs` - экспериментальное использование написанных классов
 
 ## Запуск
 + Скачать и установить актуальную версию .NET
 + Скачать исходный код
-+ Запустить исполняемый файл  `BinaryHeapExperiments.exe`, находящийся в директории `BinaryHeapExperiments\bin\Release` _(не реализовано)_
++ Запустить исполняемый файл  `BinaryHeapExperiments.exe`, находящийся в директории `BinaryHeapExperiments\bin\Release`
