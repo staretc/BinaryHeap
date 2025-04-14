@@ -17,7 +17,10 @@ namespace BinaryHeapLib
     /// Интерфейс адаптер для компараторов Бинарной Кучи
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface IBinaryHeapComparer<T> : IComparer<T> where T : IComparable<T> { }
+    public interface IBinaryHeapComparer<T> : IComparer<T> where T : IComparable<T>
+    {
+        new int Compare(T child, T parent);
+    }
     /// <summary>
     /// Компаратор для максимальной Бинарной Кучи
     /// </summary>
