@@ -28,6 +28,8 @@ namespace BinaryHeapExperiments
                 Console.ReadKey();
                 Environment.Exit(0);
             }
+
+            Console.WriteLine($"Input Stream: {String.Join(" ", inputStream)}");
             
             foreach (var item in inputStream)
             {
