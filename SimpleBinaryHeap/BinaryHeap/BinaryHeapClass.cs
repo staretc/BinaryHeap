@@ -49,10 +49,10 @@ namespace BinaryHeapLib
         public BinaryHeap(IEnumerable<T> items, IBinaryHeapComparer<T> comparer)
         {
             _comparer = comparer;
-            _nodes = new List<T>();
-            foreach (var item in items)
+            _nodes = items.ToList();
+            for (int indx = Count / 2; indx >= 0; indx--)
             {
-                Add(item);
+                Heapify(indx);
             }
         }
 
