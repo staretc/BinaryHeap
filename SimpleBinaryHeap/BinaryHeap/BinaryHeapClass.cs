@@ -46,6 +46,18 @@ namespace BinaryHeapLib
             _comparer = comparer;
         }
 
+        public BinaryHeap(IEnumerable<T> items, IBinaryHeapComparer<T> comparer)
+        {
+            _comparer = comparer;
+            _nodes = new List<T>();
+            foreach (var item in items)
+            {
+                Add(item);
+            }
+        }
+
+        public BinaryHeap(IEnumerable<T> items) : this(items, new MaxHeapComparer<T>()) { }
+
         #endregion
 
         #region Methods

@@ -52,7 +52,6 @@ namespace BinaryHeapUnitTest
         [TestMethod]
         public void Add_Remove_MaxHeap_NonExistentItems_ShouldBeAddedAndRemoved()
         {
-            var heap = new BinaryHeap<int>();
             var count = 100;
             var hashset = new HashSet<int>();
             var random = new Random();
@@ -60,10 +59,7 @@ namespace BinaryHeapUnitTest
             {
                 hashset.Add(random.Next(1, 3 * count));
             }
-            foreach (var item in hashset)
-            {
-                heap.Add(item);
-            }
+            var heap = new BinaryHeap<int>(hashset);
             var list = hashset.ToList();
             list.Sort();
             while(count > 0)
@@ -102,7 +98,6 @@ namespace BinaryHeapUnitTest
         [TestMethod]
         public void Add_Remove_MinHeap_NonExistentItems_ShouldBeAddedAndRemoved()
         {
-            var heap = new BinaryHeap<int>(new MinHeapComparer<int>());
             var count = 100;
             var hashset = new HashSet<int>();
             var random = new Random();
@@ -110,10 +105,7 @@ namespace BinaryHeapUnitTest
             {
                 hashset.Add(random.Next(1, 3 * count));
             }
-            foreach (var item in hashset)
-            {
-                heap.Add(item);
-            }
+            var heap = new BinaryHeap<int>(hashset, new MinHeapComparer<int>());
             var list = hashset.ToList();
             list.Sort();
             list.Reverse();
@@ -154,7 +146,6 @@ namespace BinaryHeapUnitTest
         [TestMethod]
         public void Peek_MaxHeap_ShouldReturnMaxItem()
         {
-            var heap = new BinaryHeap<int>();
             var count = 100;
             var hashset = new HashSet<int>();
             var random = new Random();
@@ -162,10 +153,7 @@ namespace BinaryHeapUnitTest
             {
                 hashset.Add(random.Next(1, 3 * count));
             }
-            foreach (var item in hashset)
-            {
-                heap.Add(item);
-            }
+            var heap = new BinaryHeap<int>(hashset);
             var list = hashset.ToList();
             list.Sort();
             while (count > 0)
@@ -178,7 +166,6 @@ namespace BinaryHeapUnitTest
         [TestMethod]
         public void Peek_MinHeap_ShouldReturnMinItem()
         {
-            var heap = new BinaryHeap<int>(new MinHeapComparer<int>());
             var count = 100;
             var hashset = new HashSet<int>();
             var random = new Random();
@@ -186,10 +173,7 @@ namespace BinaryHeapUnitTest
             {
                 hashset.Add(random.Next(1, 3 * count));
             }
-            foreach (var item in hashset)
-            {
-                heap.Add(item);
-            }
+            var heap = new BinaryHeap<int>(hashset, new MinHeapComparer<int>());
             var list = hashset.ToList();
             list.Sort();
             list.Reverse();
@@ -203,7 +187,6 @@ namespace BinaryHeapUnitTest
         [TestMethod]
         public void ChangingMaxHeapToMinHeap_ShoudRebuildHeapCorrectly()
         {
-            var heap = new BinaryHeap<int>();
             var count = 100;
             var hashset = new HashSet<int>();
             var random = new Random();
@@ -211,10 +194,7 @@ namespace BinaryHeapUnitTest
             {
                 hashset.Add(random.Next(1, 3 * count));
             }
-            foreach (var item in hashset)
-            {
-                heap.Add(item);
-            }
+            var heap = new BinaryHeap<int>(hashset);
             heap.SetComparator(new MinHeapComparer<int>());
             var list = hashset.ToList();
             list.Sort();
@@ -229,7 +209,6 @@ namespace BinaryHeapUnitTest
         [TestMethod]
         public void ChangingMinHeapToMaxHeap_ShoudRebuildHeapCorrectly()
         {
-            var heap = new BinaryHeap<int>(new MinHeapComparer<int>());
             var count = 100;
             var hashset = new HashSet<int>();
             var random = new Random();
@@ -237,10 +216,7 @@ namespace BinaryHeapUnitTest
             {
                 hashset.Add(random.Next(1, 3 * count));
             }
-            foreach (var item in hashset)
-            {
-                heap.Add(item);
-            }
+            var heap = new BinaryHeap<int>(hashset, new MinHeapComparer<int>());
             heap.SetComparator(new MaxHeapComparer<int>());
             var list = hashset.ToList();
             list.Sort();
